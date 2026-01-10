@@ -337,7 +337,10 @@ local function get_groups()
     -- CORE NORMAL GROUPS (THIS IS WHAT MAKES IT A THEME)
     -- ============================================================================
 
-    Normal                           = { link = "Neutral" },
+    Normal                           = {
+      fg = colors.fg1,
+      bg = neutral_bg,
+    },
     NormalFloat                      = { link = "NeutralFloat" },
     NormalNC                         = { link = "Neutral" },
 
