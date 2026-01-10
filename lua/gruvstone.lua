@@ -313,6 +313,36 @@ local function get_groups()
 
   -- paste this into Gruvstone.config.overrides (or return it)
   local groups = {
+    -- ============================================================================
+    -- REQUIRED BASE SEMANTIC GROUPS (DO NOT REMOVE)
+    -- ============================================================================
+
+    Neutral                          = { fg = colors.fg1, bg = neutral_bg },
+    NeutralFloat                     = { fg = colors.fg1, bg = float_bg },
+    NeutralPanel                     = { fg = colors.fg1, bg = panel_bg },
+
+    Punctuation                      = { fg = colors.fg4 },
+
+    String                           = { fg = colors.string.fg },
+    Constant                         = { fg = colors.constant.fg },
+    Comment                          = { fg = colors.comment.fg },
+    Function                         = { fg = colors.definition.fg },
+
+    Error                            = { fg = colors.red },
+    Warning                          = { fg = colors.yellow },
+    Info                             = { fg = colors.blue },
+    Hint                             = { fg = colors.aqua },
+
+    -- ============================================================================
+    -- CORE NORMAL GROUPS (THIS IS WHAT MAKES IT A THEME)
+    -- ============================================================================
+
+    Normal                           = { link = "Neutral" },
+    NormalFloat                      = { link = "NeutralFloat" },
+    NormalNC                         = { link = "Neutral" },
+
+    EndOfBuffer                      = { link = "Punctuation" },
+    Whitespace                       = { fg = colors.bg2 },
     -- UI elements
     CursorLine                       = { bg = colors.bg1 },
     CursorColumn                     = { link = "CursorLine" },
