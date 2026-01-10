@@ -317,11 +317,11 @@ local function get_groups()
     -- REQUIRED BASE SEMANTIC GROUPS (DO NOT REMOVE)
     -- ============================================================================
 
-    Neutral                          = { fg = colors.fg1, bg = neutral_bg },
+    Neutral                          = { fg = colors.fg1, bg = nil },
     NeutralFloat                     = { fg = colors.fg1, bg = float_bg },
     NeutralPanel                     = { fg = colors.fg1, bg = panel_bg },
 
-    Punctuation                      = { fg = colors.fg4 },
+    Punctuation                      = { fg = colors.punctuation.fg, bg = colors.punctuation.bg },
 
     String                           = { fg = colors.string.fg },
     Constant                         = { fg = colors.constant.fg },
@@ -337,10 +337,7 @@ local function get_groups()
     -- CORE NORMAL GROUPS (THIS IS WHAT MAKES IT A THEME)
     -- ============================================================================
 
-    Normal                           = {
-      fg = colors.fg1,
-      bg = neutral_bg,
-    },
+    Normal                           = { fg = colors.fg1, bg = neutral_bg },
     NormalFloat                      = { link = "NeutralFloat" },
     NormalNC                         = { link = "Neutral" },
 
