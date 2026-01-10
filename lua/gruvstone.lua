@@ -323,10 +323,10 @@ local function get_groups()
 
     Punctuation                      = { fg = colors.punctuation.fg, bg = colors.punctuation.bg },
 
-    String                           = { fg = colors.string.fg },
-    Constant                         = { fg = colors.constant.fg },
-    Comment                          = { fg = colors.comment.fg },
-    Function                         = { fg = colors.definition.fg },
+    String                           = { fg = colors.string.fg, bg = colors.string.bg },
+    Constant                         = { fg = colors.constant.fg, bg = colors.constant.bg },
+    Comment                          = { fg = colors.comment.fg, bg = colors.comment.bg },
+    Function                         = { fg = colors.definition.fg, bg = colors.definition.bg },
 
     Error                            = { fg = colors.red },
     Warning                          = { fg = colors.yellow },
