@@ -945,6 +945,11 @@ Gruvstone.load = function()
   vim.g.colors_name = "gruvstone"
   vim.o.termguicolors = true
 
+  -- IMPORTANT: background must be resolved before palette selection
+  if vim.o.background ~= "light" and vim.o.background ~= "dark" then
+    vim.o.background = "dark"
+  end
+
   local groups = get_groups()
 
   -- add highlights
