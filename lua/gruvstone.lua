@@ -414,6 +414,7 @@ local function get_groups()
     Delimiter                        = { link = "Punctuation" },
     Operator                         = { link = "Punctuation" },
     Statement                        = { link = "Neutral" },
+    Identifier                       = { link = "Neutral" },
 
     -- Clojure
     clojureKeyword                   = { link = "Constant" },
