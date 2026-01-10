@@ -1,3 +1,11 @@
+<details>
+  <summary>Screenshots</summary>
+
+  ![Image 1](https://github.com/user-attachments/assets/e022ca8f-c35e-4c99-b8c6-2f95e05c233a)
+  ![Image 2](https://github.com/user-attachments/assets/925e4c9a-3ccb-4a97-a4ae-784b53f19164)
+
+</details>
+
 # Gruvstone
 
 A minimal Neovim colorscheme inspired by **Alabaster** and based on the **Gruvbox** palette.
@@ -35,7 +43,7 @@ Using a plugin manager:
 ```lua
 -- example with lazy.nvim
 {
-  "yourname/gruvstone",
+  "xoconoch/gruvstone",
   priority = 1000,
 }
 ```
