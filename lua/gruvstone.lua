@@ -416,6 +416,11 @@ local function get_groups()
     GitSignsDeleteLn                 = { fg = colors.red },
     GitSignsDeleteNr                 = { fg = colors.red },
 
+    -- General syntax
+    Delimiter                        = { link = "Punctuation" },
+    Operator                         = { link = "Punctuation" },
+    Statement                        = { link = "Punctuation" },
+
     -- Clojure
     clojureKeyword                   = { link = "Constant" },
     clojureCond                      = { link = "Neutral" },
