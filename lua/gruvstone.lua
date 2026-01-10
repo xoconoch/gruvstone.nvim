@@ -324,22 +324,22 @@ local function get_groups()
 
     -- Alabaster's 4 categories using Gruvstone colors:
     -- 1. Strings
-    String                           = { link = colors.string.fg, bg = colors.string.bg },
+    String                           = { fg = colors.string.fg, bg = colors.string.bg },
 
     -- 2. Constants (numbers, symbols, keywords, booleans)
-    Constant                         = { link = colors.constant.fg, bg = colors.constant.bg },
+    Constant                         = { fg = colors.constant.fg, bg = colors.constant.bg },
     Number                           = { link = "Constant" },
     Boolean                          = { link = "Constant" },
 
     -- 3. Comments
-    Comment                          = { link = colors.comment.fg, bg = colors.comment.bg },
+    Comment                          = { fg = colors.comment.fg, bg = colors.comment.bg },
 
     -- 4. Global definitions (functions, classes, etc.)
-    Function                         = { link = colors.definition.fg, bg = colors.definition.bg },
+    Function                         = { fg link = colors.definition.fg, bg = colors.definition.bg },
     Identifier                       = { fg = colors.fg1 },
 
     -- 5. Punctuation
-    Punctuation                      = { link = "Punctuation" },
+    Punctuation                      = { fg = colors.bg1 },
     Operator                         = { link = "Punctuation" },
 
     -- Neutralize all language keywords (if, else, function, etc.)
