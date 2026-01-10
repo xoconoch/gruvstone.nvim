@@ -335,11 +335,11 @@ local function get_groups()
     Comment                          = { fg = colors.comment.fg, bg = colors.comment.bg },
 
     -- 4. Global definitions (functions, classes, etc.)
-    Function                         = { fg link = colors.definition.fg, bg = colors.definition.bg },
+    Function                         = { fg = colors.definition.fg, bg = colors.definition.bg },
     Identifier                       = { fg = colors.fg1 },
 
     -- 5. Punctuation
-    Punctuation                      = { fg = colors.bg1 },
+    Punctuation                      = { fg = colors.punctuation },
     Operator                         = { link = "Punctuation" },
 
     -- Neutralize all language keywords (if, else, function, etc.)
