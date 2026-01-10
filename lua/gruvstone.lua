@@ -1,7 +1,7 @@
----@class Gruvbox
----@field config GruvboxConfig
----@field palette GruvboxPalette
-local Gruvbox = {}
+---@class Gruvstone
+---@field config GruvstoneConfig
+---@field palette GruvstonePalette
+local Gruvstone = {}
 
 ---@alias Contrast "hard" | "soft" | ""
 
@@ -28,7 +28,7 @@ local Gruvbox = {}
 ---@field reverse boolean?
 ---@field nocombine boolean?
 
----@class GruvboxConfig
+---@class GruvstoneConfig
 ---@field bold boolean?
 ---@field contrast Contrast?
 ---@field dim_inactive boolean?
@@ -68,11 +68,11 @@ local default_config = {
   transparent_mode = false,
 }
 
-Gruvbox.config = vim.deepcopy(default_config)
+Gruvstone.config = vim.deepcopy(default_config)
 
--- main gruvbox color palette
----@class GruvboxPalette
-Gruvbox.palette = {
+-- main gruvstone color palette
+---@class GruvstonePalette
+Gruvstone.palette = {
   dark0_hard = "#1d2021",
   dark0 = "#282828",
   dark0_soft = "#32302f",
@@ -129,10 +129,10 @@ Gruvbox.palette = {
   gray = "#928374",
 }
 
--- get a hex list of gruvbox colors based on current bg and constrast config
+-- get a hex list of gruvstone colors based on current bg and constrast config
 local function get_colors()
-  local p = Gruvbox.palette
-  local config = Gruvbox.config
+  local p = Gruvstone.palette
+  local config = Gruvstone.config
 
   for color, hex in pairs(config.palette_overrides) do
     p[color] = hex
@@ -152,14 +152,14 @@ local function get_colors()
       fg3 = p.light3,
       fg4 = p.light4,
 
-      -- Keep Gruvbox colors but map them to Alabaster's 4 categories
-      -- 1. Strings → Gruvbox green
+      -- Keep Gruvstone colors but map them to Alabaster's 4 categories
+      -- 1. Strings → Gruvstone green
       string = p.bright_green,
-      -- 2. Constants → Gruvbox purple
+      -- 2. Constants → Gruvstone purple
       constant = p.bright_purple,
-      -- 3. Comments → Gruvbox neutral_orange (as you have it)
+      -- 3. Comments → Gruvstone neutral_orange (as you have it)
       comment = p.neutral_orange,
-      -- 4. Global definitions → Gruvbox blue
+      -- 4. Global definitions → Gruvstone blue
       definition = p.bright_blue,
       -- 5. Punctuation → use light4 for subtle punctuation in dark mode
       punctuation = p.light4,
@@ -195,22 +195,22 @@ local function get_colors()
       fg3            = p.dark3,
       fg4            = p.dark4,
 
-      string = {
+      string         = {
         fg = p.faded_green,
         bg = p.light_green_soft,
       },
 
-      constant = {
+      constant       = {
         fg = p.faded_purple,
         bg = p.light0_soft,
       },
 
-      comment = {
+      comment        = {
         fg = p.faded_orange,
         bg = p.light0_soft,
       },
 
-      definition = {
+      definition     = {
         fg = p.faded_blue,
         bg = p.light_aqua_soft,
       },
@@ -242,10 +242,10 @@ end
 
 local function get_groups()
   local colors = get_colors()
-  local config = Gruvbox.config
+  local config = Gruvstone.config
 
   if config.terminal_colors then
-    -- Keep Gruvbox terminal colors
+    -- Keep Gruvstone terminal colors
     local term_colors = {
       colors.bg0,
       colors.neutral_red,
@@ -270,32 +270,32 @@ local function get_groups()
   end
 
   local groups = {
-    -- Gruvbox color groups for UI components
-    GruvboxFg0                       = { fg = colors.fg0 },
-    GruvboxFg1                       = { fg = colors.fg1 },
-    GruvboxFg2                       = { fg = colors.fg2 },
-    GruvboxFg3                       = { fg = colors.fg3 },
-    GruvboxFg4                       = { fg = colors.fg4 },
-    GruvboxGray                      = { fg = colors.gray },
-    GruvboxBg0                       = { fg = colors.bg0 },
-    GruvboxBg1                       = { fg = colors.bg1 },
-    GruvboxBg2                       = { fg = colors.bg2 },
-    GruvboxBg3                       = { fg = colors.bg3 },
-    GruvboxBg4                       = { fg = colors.bg4 },
-    GruvboxRed                       = { fg = colors.red },
-    GruvboxRedBold                   = { fg = colors.red, bold = config.bold },
-    GruvboxGreen                     = { fg = colors.green },
-    GruvboxGreenBold                 = { fg = colors.green, bold = config.bold },
-    GruvboxYellow                    = { fg = colors.yellow },
-    GruvboxYellowBold                = { fg = colors.yellow, bold = config.bold },
-    GruvboxBlue                      = { fg = colors.blue },
-    GruvboxBlueBold                  = { fg = colors.blue, bold = config.bold },
-    GruvboxPurple                    = { fg = colors.purple },
-    GruvboxPurpleBold                = { fg = colors.purple, bold = config.bold },
-    GruvboxAqua                      = { fg = colors.aqua },
-    GruvboxAquaBold                  = { fg = colors.aqua, bold = config.bold },
-    GruvboxOrange                    = { fg = colors.orange },
-    GruvboxOrangeBold                = { fg = colors.orange, bold = config.bold },
+    -- Gruvstone color groups for UI components
+    GruvstoneFg0                     = { fg = colors.fg0 },
+    GruvstoneFg1                     = { fg = colors.fg1 },
+    GruvstoneFg2                     = { fg = colors.fg2 },
+    GruvstoneFg3                     = { fg = colors.fg3 },
+    GruvstoneFg4                     = { fg = colors.fg4 },
+    GruvstoneGray                    = { fg = colors.gray },
+    GruvstoneBg0                     = { fg = colors.bg0 },
+    GruvstoneBg1                     = { fg = colors.bg1 },
+    GruvstoneBg2                     = { fg = colors.bg2 },
+    GruvstoneBg3                     = { fg = colors.bg3 },
+    GruvstoneBg4                     = { fg = colors.bg4 },
+    GruvstoneRed                     = { fg = colors.red },
+    GruvstoneRedBold                 = { fg = colors.red, bold = config.bold },
+    GruvstoneGreen                   = { fg = colors.green },
+    GruvstoneGreenBold               = { fg = colors.green, bold = config.bold },
+    GruvstoneYellow                  = { fg = colors.yellow },
+    GruvstoneYellowBold              = { fg = colors.yellow, bold = config.bold },
+    GruvstoneBlue                    = { fg = colors.blue },
+    GruvstoneBlueBold                = { fg = colors.blue, bold = config.bold },
+    GruvstonePurple                  = { fg = colors.purple },
+    GruvstonePurpleBold              = { fg = colors.purple, bold = config.bold },
+    GruvstoneAqua                    = { fg = colors.aqua },
+    GruvstoneAquaBold                = { fg = colors.aqua, bold = config.bold },
+    GruvstoneOrange                  = { fg = colors.orange },
+    GruvstoneOrangeBold              = { fg = colors.orange, bold = config.bold },
     -- Basic UI elements
     Normal                           = config.transparent_mode and { fg = colors.fg1, bg = nil } or
         { fg = colors.fg1, bg = colors.bg0 },
@@ -304,25 +304,25 @@ local function get_groups()
     NormalNC                         = config.dim_inactive and { fg = colors.fg0, bg = colors.bg1 } or
         { link = "Normal" },
 
-    -- Gruvbox-style UI elements
+    -- Gruvstone-style UI elements
     ColorColumn                      = { bg = colors.bg1 },
     Conceal                          = { fg = colors.blue },
-    NonText                          = { link = "GruvboxBg2" },
-    SpecialKey                       = { link = "GruvboxFg4" },
-    Directory                        = { link = "GruvboxGreen" },
-    Title                            = { link = "GruvboxGreen" },
+    NonText                          = { link = "GruvstoneBg2" },
+    SpecialKey                       = { link = "GruvstoneFg4" },
+    Directory                        = { link = "GruvstoneGreen" },
+    Title                            = { link = "GruvstoneGreen" },
     ErrorMsg                         = { fg = colors.bg0, bg = colors.red },
-    MoreMsg                          = { link = "GruvboxYellow" },
-    ModeMsg                          = { link = "GruvboxYellow" },
-    Question                         = { link = "GruvboxOrange" },
-    WarningMsg                       = { link = "GruvboxRed" },
+    MoreMsg                          = { link = "GruvstoneYellow" },
+    ModeMsg                          = { link = "GruvstoneYellow" },
+    Question                         = { link = "GruvstoneOrange" },
+    WarningMsg                       = { link = "GruvstoneRed" },
     Whitespace                       = { fg = colors.bg2 },
     EndOfBuffer                      = { link = "NonText" },
     Folded                           = { fg = colors.gray, bg = colors.bg1 },
     FoldColumn                       = config.transparent_mode and { fg = colors.gray, bg = nil } or
         { fg = colors.gray, bg = colors.bg1 },
 
-    -- Alabaster's 4 categories using Gruvbox colors:
+    -- Alabaster's 4 categories using Gruvstone colors:
     -- 1. Strings
     String                           = { fg = colors.string },
 
@@ -363,21 +363,21 @@ local function get_groups()
     Delimiter                        = { fg = colors.punctuation }, -- (), [], {}, ,, ;, ., :
     SpecialChar                      = { fg = colors.punctuation }, -- Special characters like \n, \t, etc.
 
-    -- UI elements (keep Gruvbox's but simpler)
+    -- UI elements (keep Gruvstone's but simpler)
     CursorLine                       = { bg = colors.bg1 },
     CursorColumn                     = { link = "CursorLine" },
     LineNr                           = { fg = colors.fg4 },
     CursorLineNr                     = { fg = colors.fg3, bg = colors.bg1 },
     SignColumn                       = config.transparent_mode and { bg = nil } or { bg = colors.bg1 },
 
-    -- Visual selection and search (Gruvbox style but minimal)
+    -- Visual selection and search (Gruvstone style but minimal)
     Visual                           = { bg = colors.bg3, reverse = config.inverse },
     VisualNOS                        = { link = "Visual" },
     Search                           = { fg = colors.yellow, bg = colors.bg0, reverse = config.inverse },
     IncSearch                        = { fg = colors.orange, bg = colors.bg0, reverse = config.inverse },
     CurSearch                        = { link = "IncSearch" },
 
-    -- Pmenu (Gruvbox colors)
+    -- Pmenu (Gruvstone colors)
     Pmenu                            = { fg = colors.fg1, bg = colors.bg2 },
     PmenuSel                         = { fg = colors.bg2, bg = colors.blue },
     PmenuSbar                        = { bg = colors.bg2 },
@@ -407,34 +407,34 @@ local function get_groups()
     MiniStatuslineModeSelect         = { fg = colors.bg0, bg = colors.purple },
     MiniStatuslineModeTerminal       = { fg = colors.bg0, bg = colors.orange },
 
-    -- Diff (Gruvbox colors)
+    -- Diff (Gruvstone colors)
     DiffAdd                          = { bg = colors.dark_green },
     DiffDelete                       = { bg = colors.dark_red },
     DiffChange                       = { bg = colors.dark_aqua },
     DiffText                         = { bg = colors.yellow, fg = colors.bg0 },
 
-    -- Diagnostics (Gruvbox colors)
-    DiagnosticError                  = { link = "GruvboxRed" },
-    DiagnosticWarn                   = { link = "GruvboxYellow" },
-    DiagnosticInfo                   = { link = "GruvboxBlue" },
-    DiagnosticHint                   = { link = "GruvboxAqua" },
-    DiagnosticOk                     = { link = "GruvboxGreen" },
+    -- Diagnostics (Gruvstone colors)
+    DiagnosticError                  = { link = "GruvstoneRed" },
+    DiagnosticWarn                   = { link = "GruvstoneYellow" },
+    DiagnosticInfo                   = { link = "GruvstoneBlue" },
+    DiagnosticHint                   = { link = "GruvstoneAqua" },
+    DiagnosticOk                     = { link = "GruvstoneGreen" },
     DiagnosticSignError              = { fg = colors.red, bg = colors.bg1 },
     DiagnosticSignWarn               = { fg = colors.yellow, bg = colors.bg1 },
     DiagnosticSignInfo               = { fg = colors.blue, bg = colors.bg1 },
     DiagnosticSignHint               = { fg = colors.aqua, bg = colors.bg1 },
     DiagnosticUnnecessary            = { fg = colors.punctuation },
 
-    -- Git (Gruvbox colors)
-    GitSignsAdd                      = { link = "GruvboxGreen" },
-    GitSignsAddLn                    = { link = "GruvboxGreen" },
-    GitSignsAddNr                    = { link = "GruvboxGreen" },
-    GitSignsChange                   = { link = "GruvboxOrange" },
-    GitSignsChangeLn                 = { link = "GruvboxOrange" },
-    GitSignsChangeNr                 = { link = "GruvboxOrange" },
-    GitSignsDelete                   = { link = "GruvboxRed" },
-    GitSignsDeleteLn                 = { link = "GruvboxRed" },
-    GitSignsDeleteNr                 = { link = "GruvboxRed" },
+    -- Git (Gruvstone colors)
+    GitSignsAdd                      = { link = "GruvstoneGreen" },
+    GitSignsAddLn                    = { link = "GruvstoneGreen" },
+    GitSignsAddNr                    = { link = "GruvstoneGreen" },
+    GitSignsChange                   = { link = "GruvstoneOrange" },
+    GitSignsChangeLn                 = { link = "GruvstoneOrange" },
+    GitSignsChangeNr                 = { link = "GruvstoneOrange" },
+    GitSignsDelete                   = { link = "GruvstoneRed" },
+    GitSignsDeleteLn                 = { link = "GruvstoneRed" },
+    GitSignsDeleteNr                 = { link = "GruvstoneRed" },
 
     -- Clojure
     clojureKeyword                   = { fg = colors.constant },   -- Constants (purple)
@@ -976,16 +976,16 @@ local function get_groups()
   return groups
 end
 
----@param config GruvboxConfig?
-Gruvbox.setup = function(config)
-  Gruvbox.config = vim.deepcopy(default_config)
-  Gruvbox.config = vim.tbl_deep_extend("force", Gruvbox.config, config or {})
+---@param config GruvstoneConfig?
+Gruvstone.setup = function(config)
+  Gruvstone.config = vim.deepcopy(default_config)
+  Gruvstone.config = vim.tbl_deep_extend("force", Gruvstone.config, config or {})
 end
 
 --- main load function
-Gruvbox.load = function()
+Gruvstone.load = function()
   if vim.version().minor < 8 then
-    vim.notify_once("gruvbox.nvim: you must use neovim 0.8 or higher")
+    vim.notify_once("gruvstone.nvim: you must use neovim 0.8 or higher")
     return
   end
 
@@ -993,7 +993,7 @@ Gruvbox.load = function()
   if vim.g.colors_name then
     vim.cmd.hi("clear")
   end
-  vim.g.colors_name = "gruvbox"
+  vim.g.colors_name = "gruvstone"
   vim.o.termguicolors = true
 
   local groups = get_groups()
@@ -1004,4 +1004,4 @@ Gruvbox.load = function()
   end
 end
 
-return Gruvbox
+return Gruvstone
