@@ -154,15 +154,34 @@ local function get_colors()
 
       -- Keep Gruvstone colors but map them to Alabaster's 4 categories
       -- 1. Strings → Gruvstone green
-      string = p.bright_green,
+      string = {
+        fg = p.bright_green,
+        bg = nil,
+      },
+
       -- 2. Constants → Gruvstone purple
-      constant = p.bright_purple,
-      -- 3. Comments → Gruvstone neutral_orange (as you have it)
-      comment = p.neutral_orange,
+      constant = {
+        fg = p.bright_purple,
+        bg = nil,
+      },
+
+      -- 3. Comments → Gruvstone neutral_orange
+      comment = {
+        fg = p.neutral_orange,
+        bg = nil,
+      },
+
       -- 4. Global definitions → Gruvstone blue
-      definition = p.bright_blue,
-      -- 5. Punctuation → use light4 for subtle punctuation in dark mode
-      punctuation = p.light4,
+      definition = {
+        fg = p.bright_blue,
+        bg = nil,
+      },
+
+      -- 5. Punctuation → subtle in dark mode
+      punctuation = {
+        fg = p.light4,
+        bg = nil,
+      },
 
       -- Everything else uses normal text color (light1)
       red = p.bright_red,
