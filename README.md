@@ -1,6 +1,6 @@
 # Gruvstone
 
-A minimal Neovim colorscheme inspired by **Alabaster** and based on the **Gruvbox Light** palette.
+A minimal Neovim colorscheme inspired by **Alabaster** and based on the **Gruvbox** palette.
 
 Gruvstone highlights only a small set of semantic elements and keeps everything else quiet, using warm, low-contrast colors suitable for long coding sessions.
 
@@ -51,13 +51,6 @@ or in Lua:
 ```lua
 vim.cmd.colorscheme("gruvstone")
 ```
-
----
-
-## Variants
-
-* Background-based semantic highlighting
-* Gruvbox-derived palette
 
 ---
 
