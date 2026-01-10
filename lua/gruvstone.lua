@@ -263,17 +263,12 @@ local function get_colors()
 end
 
 local function get_groups()
-  local colors = get_colors()
-  local config = Gruvstone.config
+  local colors     = get_colors()
+  local config     = Gruvstone.config
 
   ---------------------------------------------------------------------------
   -- Helpers
   ---------------------------------------------------------------------------
-
-  local function fg(c) return { fg = c } end
-  local function bg(c) return { bg = c } end
-  local function fg_bg(f, b) return { fg = f, bg = b } end
-  local function link(name) return { link = name } end
 
   local neutral_bg = config.transparent_mode and nil or colors.bg0
   local float_bg   = config.transparent_mode and nil or colors.bg1
@@ -311,7 +306,6 @@ local function get_groups()
   -- Semantic base groups (THE FOUNDATION)
   ---------------------------------------------------------------------------
 
-  -- paste this into Gruvstone.config.overrides (or return it)
   local groups = {
     -- ============================================================================
     -- REQUIRED BASE SEMANTIC GROUPS (DO NOT REMOVE)
