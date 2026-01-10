@@ -152,26 +152,16 @@ local function get_colors()
       fg3 = p.light3,
       fg4 = p.light4,
 
-      string = {
-        fg = p.faded_green,
-        bg = p.light_green_soft,
-      },
-
-      constant = {
-        fg = p.faded_purple,
-        bg = p.light0_soft,
-      },
-
-      comment = {
-        fg = p.faded_orange,
-        bg = p.light0_soft,
-      },
-
-      definition = {
-        fg = p.faded_blue,
-        bg = p.light_aqua_soft,
-      },
-
+      -- Keep Gruvbox colors but map them to Alabaster's 4 categories
+      -- 1. Strings → Gruvbox green
+      string = p.bright_green,
+      -- 2. Constants → Gruvbox purple
+      constant = p.bright_purple,
+      -- 3. Comments → Gruvbox neutral_orange (as you have it)
+      comment = p.neutral_orange,
+      -- 4. Global definitions → Gruvbox blue
+      definition = p.bright_blue,
+      -- 5. Punctuation → use light4 for subtle punctuation in dark mode
       punctuation = p.light4,
 
       -- Everything else uses normal text color (light1)
@@ -205,26 +195,24 @@ local function get_colors()
       fg3            = p.dark3,
       fg4            = p.dark4,
 
-      -- Use faded versions for light mode (following Gruvbox's pattern)
-      -- 1. Strings → faded green
-      string         = {
+      string = {
         fg = p.faded_green,
-        bg = bg_string,
+        bg = p.light_green_soft,
       },
-      -- 2. Constants → faded purple
-      constant       = {
+
+      constant = {
         fg = p.faded_purple,
-        bg = bg_constant,
+        bg = p.light0_soft,
       },
-      -- 3. Comments → gray (as you have it)
-      comment        = {
+
+      comment = {
         fg = p.faded_orange,
-        bg = bg_comment,
+        bg = p.light0_soft,
       },
-      -- 4. Global definitions → faded blue
-      definition     = {
+
+      definition = {
         fg = p.faded_blue,
-        bg = bg_definition,
+        bg = p.light_aqua_soft,
       },
       -- 5. Punctuation → use dark4 for subtle punctuation in light mode
       punctuation    = p.dark4,
