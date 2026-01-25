@@ -565,9 +565,9 @@ local function get_groups()
     typstCodeLabel                   = { link = "Neutral" },
     typstCodeFieldAccess             = { link = "Neutral" },
 
-    typstCodeParen                   = { link = "Punctuation" },
+    typstCodeParen                   = { link = "Neutral" },
     typstCodeBrace                   = { link = "Punctuation" },
-    typstCodeBracket                 = { link = "Punctuation" },
+    typstCodeBracket                 = { link = "Neutral" },
     typstCodeDollar                  = { link = "Punctuation" },
 
     -- Nix (fix special/error usage)
