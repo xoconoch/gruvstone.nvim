@@ -553,6 +553,7 @@ local function get_groups()
 
     typstCodeIdentifier              = { link = "Neutral" },
     typstCodeFunction                = { link = "Function" },
+    typstCodeFunctionArgument        = { link = "Neutral" },
     typstCodeConstant                = { link = "Constant" },
     typstCodeNumberInteger           = { link = "Constant" },
     typstCodeNumberFloat             = { link = "Constant" },
