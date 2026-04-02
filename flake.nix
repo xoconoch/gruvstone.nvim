@@ -25,9 +25,9 @@
 
           src = pkgs.fetchFromGitHub {
             owner = "xoconoch";
-            repo = "gruvstone";
-            rev = "ae2560a5e40c7382e96d4beb08fd0b40be8a22fc";
-            sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+            repo = "gruvstone.nvim";
+            rev = "055eed60ccad6b91581b76c228ca4dd37f3ba637";
+            sha256 = "sha256-Ff+Wv3HkyI9C/C0kadxkU5Jfh1XvX11nI7p0ZeN9Vas=";
           };
 
           meta = with pkgs.lib; {
