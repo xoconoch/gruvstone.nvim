@@ -311,7 +311,7 @@ local function get_groups()
     -- REQUIRED BASE SEMANTIC GROUPS (DO NOT REMOVE)
     -- ============================================================================
 
-    Neutral                          = { fg = colors.fg1, bg = nil },
+    Neutral                          = { fg = colors.blue, bg = nil },
     NeutralFloat                     = { fg = colors.fg1, bg = float_bg },
     NeutralPanel                     = { fg = colors.fg1, bg = panel_bg },
 
