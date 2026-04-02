@@ -338,6 +338,7 @@ local function get_groups()
     EndOfBuffer                      = { link = "Punctuation" },
     Whitespace                       = { fg = colors.bg2 },
     -- UI elements
+    MoreMsg                          = { fg = colors.aqua },
     Directory                        = { fg = colors.yellow },
     Special                          = { fg = colors.blue },
     CursorLine                       = { bg = colors.bg1 },
