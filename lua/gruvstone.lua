@@ -718,6 +718,39 @@ local function get_groups()
     haskellTypeForall                = { link = "Neutral" },
     haskellPatternKeyword            = { link = "Neutral" },
 
+    -- TeX / LaTeX
+    texStatement                     = { link = "Function" }, -- \command
+    texCmdName                       = { link = "Function" }, -- command names
+    texCmdArgs                       = { link = "Neutral" },  -- {...}
+    texArg                           = { link = "Neutral" },
+    texOptArg                        = { link = "Neutral" },  -- [...]
+    texEnvName                       = { link = "Function" }, -- \begin{env}
+    texBeginEnd                      = { link = "Function" },
+    texBeginEndName                  = { link = "Function" },
+    texSection                       = { link = "Function" }, -- \section etc
+    texSectionName                   = { link = "Function" },
+    texMath                          = { link = "Constant" }, -- $...$
+    texMathZoneX                     = { link = "Constant" },
+    texMathDelimiter                 = { link = "Punctuation" },
+    texSuperscript                   = { link = "Neutral" },     -- ^
+    texSubscript                     = { link = "Neutral" },     -- _
+    texDelimiter                     = { link = "Punctuation" }, -- {}, []
+    texDelim                         = { link = "Punctuation" },
+    texSpecialChar                   = { link = "Constant" },    -- \%, \&, etc
+    texSymbol                        = { link = "Constant" },
+    texComment                       = { link = "Comment" },
+    texRef                           = { link = "Function" }, -- \ref, \cite
+    texCite                          = { link = "Function" },
+    texUrl                           = { link = "Constant" },
+    texTitle                         = { link = "Function" },
+    texAuthor                        = { link = "Neutral" },
+    texDate                          = { link = "Neutral" },
+    texBoldStyle                     = { link = "Neutral" },
+    texItalicStyle                   = { link = "Neutral" },
+    texUnderlineStyle                = { link = "Neutral" },
+    texInputFile                     = { link = "Constant" }, -- \input, \include
+    texError                         = { link = "Error" },
+
     -- JSON
     jsonKeyword                      = { link = "String" },
     jsonQuote                        = { link = "String" },
