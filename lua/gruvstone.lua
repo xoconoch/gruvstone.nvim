@@ -418,6 +418,7 @@ local function get_groups()
     Operator                         = { link = "Punctuation" },
     Statement                        = { link = "Neutral" },
     Identifier                       = { link = "Neutral" },
+    PreProc                          = { link = "Neutral" },
 
     -- Clojure
     clojureKeyword                   = { link = "Constant" },
@@ -895,7 +896,9 @@ local function get_groups()
     openscadPar                      = { link = "Punctuation" },
     openscadLi                       = { link = "Punctuation" },
     openscadBinaryoperator           = { link = "Punctuation" },
+    openscadAoperator                = { link = "Punctuation" },
     openscadTransform                = { link = "Function" },
+    openscadPrimitiveSolid           = { link = "Function" },
 
     -- Tree-sitter mappings (keep links to semantic groups)
     ["@comment"]                     = { link = "Comment" },
