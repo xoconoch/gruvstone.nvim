@@ -891,6 +891,12 @@ local function get_groups()
     markdownYamlHead                 = { link = "Comment" },
     markdownValid                    = { link = "Neutral" },
 
+    -- OpenSCAD
+    openenscadPar                    = { link = "Punctuation" },
+    openenscadLi                     = { link = "Punctuation" },
+    openscadBinaryoperator           = { link = "Punctuation" },
+    openscadTransform                = { link = "Function" },
+
     -- Tree-sitter mappings (keep links to semantic groups)
     ["@comment"]                     = { link = "Comment" },
     ["@string"]                      = { link = "String" },
@@ -937,7 +943,7 @@ local function get_groups()
     ["@variable"]                    = { link = "Neutral" },
     ["@variable.builtin"]            = { link = "Neutral" },
     ["@variable.member"]             = { link = "Neutral" },
-    ["@variable.parameter"]          = { link = "Neutral" },
+    ["@variable.parameter"]          = { link = "Constant" },
     ["@module"]                      = { link = "Neutral" },
     ["@namespace"]                   = { link = "Neutral" },
     ["@symbol"]                      = { link = "Neutral" },
