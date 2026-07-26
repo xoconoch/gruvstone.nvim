@@ -918,6 +918,7 @@ local function get_groups()
     ["@method.call"]                 = { link = "Function" },
     ["@constructor"]                 = { link = "Punctuation" },
     ["@lsp.type.punctuation"]        = { link = "Punctuation" },
+    ["@lsp.type.parameter"]          = { link = "Constant" },
 
     ["@keyword"]                     = { link = "Neutral" },
     ["@keyword.conditional"]         = { link = "Neutral" },
