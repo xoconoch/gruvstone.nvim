@@ -892,8 +892,8 @@ local function get_groups()
     markdownValid                    = { link = "Neutral" },
 
     -- OpenSCAD
-    openenscadPar                    = { link = "Punctuation" },
-    openenscadLi                     = { link = "Punctuation" },
+    openscadPar                      = { link = "Punctuation" },
+    openscadLi                       = { link = "Punctuation" },
     openscadBinaryoperator           = { link = "Punctuation" },
     openscadTransform                = { link = "Function" },
 
