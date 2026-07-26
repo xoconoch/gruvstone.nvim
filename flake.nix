@@ -21,7 +21,7 @@
 
         gruvstone = pkgs.vimUtils.buildVimPlugin {
           pname = "gruvstone";
-          version = "0.1.0";
+          version = "0.1.0-${self.shortRev or "dirty"}";
 
           src = ./.;
 
