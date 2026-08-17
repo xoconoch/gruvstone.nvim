@@ -450,7 +450,7 @@ local function get_groups()
     cStructure                            = { link = "Neutral" },
 
     -- Python
-    pythonBuiltin                         = { link = "Function" },
+    pythonBuiltin                         = { link = "Neutral" },
     pythonBuiltinObj                      = { link = "Function" },
     pythonBuiltinFunc                     = { link = "Function" },
     pythonFunction                        = { link = "Function" },
