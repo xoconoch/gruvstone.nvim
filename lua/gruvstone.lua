@@ -1000,6 +1000,9 @@ Gruvstone.load = function()
     vim.o.background = "dark"
   end
 
+  -- Give Tree-sitter highlighting priority over LSP semantic tokens
+  vim.hl.priorities.semantic_tokens = 90
+
   local groups = get_groups()
 
   -- add highlights
