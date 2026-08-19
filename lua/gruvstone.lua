@@ -916,6 +916,7 @@ local function get_groups()
     ["@function"]                         = { link = "Function" },
     ["@function.builtin"]                 = { link = "Function" },
     ["@function.call"]                    = { link = "Neutral" },
+    ["@function.method.call"]             = { link = "Neutral" },
     ["@function.macro"]                   = { link = "Function" },
     ["@method"]                           = { link = "Function" },
     ["@method.call"]                      = { link = "Neutral" },
