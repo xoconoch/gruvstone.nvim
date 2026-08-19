@@ -914,7 +914,7 @@ local function get_groups()
     ["@number"]                           = { link = "Constant" },
 
     ["@function"]                         = { link = "Function" },
-    ["@function.builtin"]                 = { link = "Function" },
+    ["@function.builtin"]                 = { link = "Neutral" },
     ["@function.call"]                    = { link = "Neutral" },
     ["@function.method.call"]             = { link = "Neutral" },
     ["@function.macro"]                   = { link = "Function" },
@@ -944,6 +944,7 @@ local function get_groups()
     ["@include"]                          = { link = "Neutral" },
     ["@exception"]                        = { link = "Neutral" },
     ["@type"]                             = { link = "Neutral" },
+    ["@type.builtin"]                     = { link = "Neutral" },
     ["@storageclass"]                     = { link = "Neutral" },
     ["@attribute"]                        = { link = "Neutral" },
     ["@field"]                            = { link = "Neutral" },
