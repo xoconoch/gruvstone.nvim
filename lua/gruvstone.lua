@@ -947,6 +947,7 @@ local function get_groups()
     ["@type.builtin"]                     = { link = "Neutral" },
     ["@storageclass"]                     = { link = "Neutral" },
     ["@attribute"]                        = { link = "Neutral" },
+    ["@attribute.builtin"]                = { link = "Neutral" },
     ["@field"]                            = { link = "Neutral" },
     ["@property"]                         = { link = "Neutral" },
     ["@variable"]                         = { link = "Neutral" },
