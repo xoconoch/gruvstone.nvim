@@ -959,6 +959,7 @@ local function get_groups()
     ["@tag.attribute"]                    = { link = "Neutral" },
     ["@tag.delimiter"]                    = { link = "Neutral" },
     ["@punctuation"]                      = { link = "Punctuation" },
+    ["@punctuation.special"]              = { link = "Punctuation" },
     ["@macro"]                            = { link = "Neutral" },
     ["@structure"]                        = { link = "Neutral" },
 
