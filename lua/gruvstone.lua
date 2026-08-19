@@ -921,11 +921,34 @@ local function get_groups()
     ["@method"]                           = { link = "Function" },
     ["@method.call"]                      = { link = "Neutral" },
     ["@constructor"]                      = { link = "Punctuation" },
+
+    -- Parameters (Tree-sitter captures)
+    ["@parameter"]                        = { link = "Constant" },
+    ["@parameter.builtin"]                = { link = "Constant" },
+    ["@variable.parameter"]               = { link = "Constant" },
+    ["@variable.parameter.builtin"]       = { link = "Constant" },
+
+    -- LSP semantic tokens
     ["@lsp.type.punctuation"]             = { link = "Punctuation" },
+    ["@lsp.type.operator"]                = { link = "Punctuation" },
     ["@lsp.type.parameter"]               = { link = "Constant" },
     ["@lsp.type.function"]                = { link = "Neutral" },
+    ["@lsp.type.method"]                  = { link = "Neutral" },
+    ["@lsp.type.variable"]                = { link = "Neutral" },
+    ["@lsp.type.property"]                = { link = "Neutral" },
+    ["@lsp.type.comment"]                 = { link = "Comment" },
+    ["@lsp.type.string"]                  = { link = "String" },
+    ["@lsp.type.number"]                  = { link = "Constant" },
+    ["@lsp.type.boolean"]                 = { link = "Constant" },
+    ["@lsp.type.enumMember"]              = { link = "Constant" },
     ["@lsp.typemod.function.declaration"] = { link = "Function" },
     ["@lsp.typemod.function.definition"]  = { link = "Function" },
+    ["@lsp.typemod.method.declaration"]   = { link = "Function" },
+    ["@lsp.typemod.method.definition"]    = { link = "Function" },
+    ["@lsp.typemod.parameter.declaration"]= { link = "Constant" },
+    ["@lsp.typemod.parameter.readonly"]   = { link = "Constant" },
+    ["@lsp.typemod.variable.declaration"] = { link = "Constant" },
+    ["@lsp.typemod.variable.readonly"]    = { link = "Constant" },
 
     ["@keyword"]                          = { link = "Neutral" },
     ["@keyword.conditional"]              = { link = "Neutral" },
@@ -953,7 +976,6 @@ local function get_groups()
     ["@variable"]                         = { link = "Neutral" },
     ["@variable.builtin"]                 = { link = "Neutral" },
     ["@variable.member"]                  = { link = "Neutral" },
-    ["@variable.parameter"]               = { link = "Constant" },
     ["@module"]                           = { link = "Neutral" },
     ["@namespace"]                        = { link = "Neutral" },
     ["@symbol"]                           = { link = "Neutral" },
@@ -1004,8 +1026,9 @@ Gruvstone.load = function()
     vim.o.background = "dark"
   end
 
-  -- Give Tree-sitter highlighting priority over LSP semantic tokens
-  vim.hl.priorities.semantic_tokens = 90
+  -- Ensure LSP semantic tokens have priority over Tree-sitter syntax fallback
+  -- (Neovim default is 125, which allows LSP to correctly mark parameter usage in function bodies)
+  vim.hl.priorities.semantic_tokens = 125
 
   local groups = get_groups()
 
