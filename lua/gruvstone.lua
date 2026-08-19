@@ -910,8 +910,8 @@ local function get_groups()
     ["@constant"]                         = { link = "Constant" },
     ["@constant.builtin"]                 = { link = "Constant" },
     ["@constant.macro"]                   = { link = "Constant" },
-    ["@boolean"]                          = { link = "Constant" },
-    ["@number"]                           = { link = "Constant" },
+    ["@boolean"]                          = { link = "String" },
+    ["@number"]                           = { link = "String" },
 
     ["@function"]                         = { link = "Function" },
     ["@function.builtin"]                 = { link = "Neutral" },
