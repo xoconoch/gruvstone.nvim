@@ -1075,7 +1075,50 @@ local function setup_treesitter_predicates()
     if not node then return true end
     return is_param_ref(node, buf)
   end, true)
+
+  local function is_typst_param_ref(node, bufnr_or_code)
+    local source = bufnr_or_code or 0
+    local ok, var_name = pcall(vim.treesitter.get_node_text, node, source)
+    if not ok or not var_name or var_name == "" then return false end
+
+    local current = node:parent()
+
+    while current do
+      local ctype = current:type()
+
+      if ctype == "let" then
+        for child in current:iter_children() do
+          if child:type() == "call" then
+            for call_child in child:iter_children() do
+              if call_child:type() == "group" then
+                for gchild in call_child:iter_children() do
+                  if gchild:type() == "ident" and vim.treesitter.get_node_text(gchild, source) == var_name then
+                    return true
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+
+      current = current:parent()
+    end
+
+    return false
+  end
+
+  vim.treesitter.query.add_predicate("is-typst-parameter-ref?", function(match, pattern, buf, predicate)
+    local capture_id = predicate[2]
+    if not capture_id then return true end
+    local nodes = match[capture_id]
+    if not nodes then return true end
+    local node = type(nodes) == "table" and nodes[#nodes] or nodes
+    if not node then return true end
+    return is_typst_param_ref(node, buf)
+  end, true)
 end
+
 
 setup_treesitter_predicates()
 
