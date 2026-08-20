@@ -419,6 +419,11 @@ local function get_groups()
     Statement                              = { link = "Neutral" },
     Identifier                             = { link = "Neutral" },
     PreProc                                = { link = "Neutral" },
+    Number                                 = { link = "String" },
+    Boolean                                = { link = "String" },
+    Float                                  = { link = "String" },
+    Character                              = { link = "String" },
+
 
     -- Clojure
     clojureKeyword                         = { link = "Constant" },
@@ -462,8 +467,9 @@ local function get_groups()
     pythonOperator                         = { link = "Neutral" },
     pythonException                        = { link = "Neutral" },
     pythonExceptions                       = { link = "Constant" },
-    pythonBoolean                          = { link = "Constant" },
+    pythonBoolean                          = { link = "String" },
     pythonDot                              = { link = "Punctuation" },
+
     pythonConditional                      = { link = "Neutral" },
     pythonRepeat                           = { link = "Neutral" },
     pythonDottedName                       = { link = "Function" },
@@ -505,7 +511,7 @@ local function get_groups()
     javaScriptFunction                     = { link = "Function" },
     javaScriptIdentifier                   = { link = "Neutral" },
     javaScriptMember                       = { link = "Neutral" },
-    javaScriptNumber                       = { link = "Constant" },
+    javaScriptNumber                       = { link = "String" },
     javaScriptNull                         = { link = "Constant" },
     javaScriptParens                       = { link = "Punctuation" },
 
@@ -559,12 +565,12 @@ local function get_groups()
     typstCodeFunction                      = { link = "Function" },
     typstCodeFunctionArgument              = { link = "Neutral" },
     typstCodeConstant                      = { link = "Constant" },
-    typstCodeNumberInteger                 = { link = "Constant" },
-    typstCodeNumberFloat                   = { link = "Constant" },
-    typstCodeNumberLength                  = { link = "Constant" },
-    typstCodeNumberAngle                   = { link = "Constant" },
-    typstCodeNumberRatio                   = { link = "Constant" },
-    typstCodeNumberFraction                = { link = "Constant" },
+    typstCodeNumberInteger                 = { link = "String" },
+    typstCodeNumberFloat                   = { link = "String" },
+    typstCodeNumberLength                  = { link = "String" },
+    typstCodeNumberAngle                   = { link = "String" },
+    typstCodeNumberRatio                   = { link = "String" },
+    typstCodeNumberFraction                = { link = "String" },
     typstCodeString                        = { link = "String" },
     typstCodeLabel                         = { link = "Neutral" },
     typstCodeFieldAccess                   = { link = "Neutral" },
@@ -575,12 +581,13 @@ local function get_groups()
     typstCodeDollar                        = { link = "Punctuation" },
 
     -- Nix (fix special/error usage)
-    nixBoolean                             = { link = "Constant" },
+    nixBoolean                             = { link = "String" },
     nixNull                                = { link = "Constant" },
     nixRecKeyword                          = { link = "Neutral" },
     nixOperator                            = { link = "Neutral" },
     nixParen                               = { link = "Punctuation" },
-    nixInteger                             = { link = "Constant" },
+    nixInteger                             = { link = "String" },
+
     nixComment                             = { link = "Comment" },
     nixTodo                                = { link = "Warning" }, -- TODO/FIXME -> warning
     nixInterpolation                       = { link = "Punctuation" },
@@ -701,12 +708,13 @@ local function get_groups()
     haskellDecl                            = { link = "Function" },
     haskellDeriving                        = { link = "Neutral" },
     haskellAssocType                       = { link = "Neutral" },
-    haskellNumber                          = { link = "Constant" },
+    haskellNumber                          = { link = "String" },
     haskellPragma                          = { link = "Constant" },
     haskellTH                              = { link = "Function" },
     haskellForeignKeywords                 = { link = "Neutral" },
     haskellKeyword                         = { link = "Neutral" },
-    haskellFloat                           = { link = "Constant" },
+    haskellFloat                           = { link = "String" },
+
     haskellInfix                           = { link = "Punctuation" },
     haskellQuote                           = { link = "String" },
     haskellShebang                         = { link = "Comment" },
@@ -722,9 +730,9 @@ local function get_groups()
     -- TeX / LaTeX
     texStatement                           = { link = "Function" }, -- \command
     texCmdName                             = { link = "Function" }, -- command names
-    texCmdArgs                             = { link = "Neutral" }, -- {...}
+    texCmdArgs                             = { link = "Neutral" },  -- {...}
     texArg                                 = { link = "Neutral" },
-    texOptArg                              = { link = "Neutral" }, -- [...]
+    texOptArg                              = { link = "Neutral" },  -- [...]
     texEnvName                             = { link = "Function" }, -- \begin{env}
     texBeginEnd                            = { link = "Function" },
     texBeginEndName                        = { link = "Function" },
@@ -733,11 +741,11 @@ local function get_groups()
     texMath                                = { link = "Constant" }, -- $...$
     texMathZoneX                           = { link = "Constant" },
     texMathDelimiter                       = { link = "Punctuation" },
-    texSuperscript                         = { link = "Neutral" },    -- ^
-    texSubscript                           = { link = "Neutral" },    -- _
+    texSuperscript                         = { link = "Neutral" },     -- ^
+    texSubscript                           = { link = "Neutral" },     -- _
     texDelimiter                           = { link = "Punctuation" }, -- {}, []
     texDelim                               = { link = "Punctuation" },
-    texSpecialChar                         = { link = "Constant" },   -- \%, \&, etc
+    texSpecialChar                         = { link = "Constant" },    -- \%, \&, etc
     texSymbol                              = { link = "Constant" },
     texComment                             = { link = "Comment" },
     texRef                                 = { link = "Function" }, -- \ref, \cite
@@ -912,6 +920,9 @@ local function get_groups()
     ["@constant.macro"]                    = { link = "Constant" },
     ["@boolean"]                           = { link = "String" },
     ["@number"]                            = { link = "String" },
+    ["@number.float"]                      = { link = "String" },
+    ["@float"]                             = { link = "String" },
+
 
     ["@function"]                          = { link = "Function" },
     ["@function.builtin"]                  = { link = "Neutral" },
@@ -938,8 +949,8 @@ local function get_groups()
     ["@lsp.type.property"]                 = { link = "Neutral" },
     ["@lsp.type.comment"]                  = { link = "Comment" },
     ["@lsp.type.string"]                   = { link = "String" },
-    ["@lsp.type.number"]                   = { link = "Constant" },
-    ["@lsp.type.boolean"]                  = { link = "Constant" },
+    ["@lsp.type.number"]                   = { link = "String" },
+    ["@lsp.type.boolean"]                  = { link = "String" },
     ["@lsp.type.enumMember"]               = { link = "Constant" },
     ["@lsp.typemod.function.declaration"]  = { link = "Function" },
     ["@lsp.typemod.function.definition"]   = { link = "Function" },
@@ -1156,4 +1167,3 @@ Gruvstone.load = function()
 end
 
 return Gruvstone
-
