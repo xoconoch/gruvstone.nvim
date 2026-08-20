@@ -985,12 +985,86 @@ Gruvstone.setup = function(config)
   Gruvstone.config = vim.tbl_deep_extend("force", Gruvstone.config, config or {})
 end
 
+local function setup_treesitter_predicates()
+  if not (vim.treesitter and vim.treesitter.query and vim.treesitter.query.add_predicate) then
+    return
+  end
+
+  local function is_param_ref(node, bufnr_or_code)
+    local source = bufnr_or_code or 0
+    local ok, var_name = pcall(vim.treesitter.get_node_text, node, source)
+    if not ok or not var_name or var_name == "" then return false end
+
+    local current = node:parent()
+
+    while current do
+      local ctype = current:type()
+
+      if ctype == "let_expression" or ctype == "rec_attrset_expression" then
+        for child in current:iter_children() do
+          if child:type() == "binding_set" then
+            for binding in child:iter_children() do
+              if binding:type() == "binding" then
+                local attrpath = binding:field("attrpath")[1] or binding:child(0)
+                if attrpath and attrpath:type() == "attrpath" then
+                  local first_attr = attrpath:child(0)
+                  if first_attr and vim.treesitter.get_node_text(first_attr, source) == var_name then
+                    return false
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+
+      if ctype == "function_expression" then
+        for child in current:iter_children() do
+          if child:type() == "formals" then
+            for formal in child:iter_children() do
+              if formal:type() == "formal" then
+                for fchild in formal:iter_children() do
+                  if fchild:type() == "identifier" and vim.treesitter.get_node_text(fchild, source) == var_name then
+                    return true
+                  end
+                end
+              end
+            end
+          elseif child:type() == "identifier" then
+            if vim.treesitter.get_node_text(child, source) == var_name then
+              return true
+            end
+          end
+        end
+      end
+
+      current = current:parent()
+    end
+
+    return false
+  end
+
+  vim.treesitter.query.add_predicate("is-parameter-ref?", function(match, pattern, buf, predicate)
+    local capture_id = predicate[2]
+    if not capture_id then return true end
+    local nodes = match[capture_id]
+    if not nodes then return true end
+    local node = type(nodes) == "table" and nodes[#nodes] or nodes
+    if not node then return true end
+    return is_param_ref(node, buf)
+  end, true)
+end
+
+setup_treesitter_predicates()
+
 --- main load function
 Gruvstone.load = function()
   if vim.version().minor < 8 then
     vim.notify_once("gruvstone.nvim: you must use neovim 0.8 or higher")
     return
   end
+
+  setup_treesitter_predicates()
 
   -- reset colors
   if vim.g.colors_name then
@@ -1016,3 +1090,4 @@ Gruvstone.load = function()
 end
 
 return Gruvstone
+
