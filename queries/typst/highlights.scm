@@ -2,20 +2,20 @@
 
 ; Top-level function definitions in #let fn(...) = ...
 ((let
-  (call
+  pattern: (call
     (ident) @function))
   (#set! "priority" 130))
 
 ; Function parameters in signature #let fn(param1, param2) = ...
 ((let
-  (call
+  pattern: (call
     (group
       (ident) @variable.parameter)))
   (#set! "priority" 130))
 
 ; Variable definitions in #let var = ...
 ((let
-  (ident) @variable)
+  pattern: (ident) @variable)
   (#set! "priority" 130))
 
 ; Default standalone identifiers to @variable instead of @constant

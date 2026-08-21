@@ -1098,14 +1098,14 @@ local function setup_treesitter_predicates()
       local ctype = current:type()
 
       if ctype == "let" then
-        for child in current:iter_children() do
-          if child:type() == "call" then
-            for call_child in child:iter_children() do
-              if call_child:type() == "group" then
-                for gchild in call_child:iter_children() do
-                  if gchild:type() == "ident" and vim.treesitter.get_node_text(gchild, source) == var_name then
-                    return true
-                  end
+        local pattern_nodes = current:field("pattern")
+        local pattern = pattern_nodes and pattern_nodes[1]
+        if pattern and pattern:type() == "call" then
+          for call_child in pattern:iter_children() do
+            if call_child:type() == "group" then
+              for gchild in call_child:iter_children() do
+                if gchild:type() == "ident" and vim.treesitter.get_node_text(gchild, source) == var_name then
+                  return true
                 end
               end
             end
